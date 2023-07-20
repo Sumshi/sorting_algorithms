@@ -11,7 +11,7 @@ void bubble_sort(int *array, size_t size)
 	size_t j;/*iterates the inner loop compares elements*/
 	int temp;/*to store copy of one element*/
 
-	if (array == NULL || size <= 1)
+	if (array == NULL || size < 2)
 	{
 		return;
 	}
