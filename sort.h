@@ -28,5 +28,5 @@ void insertion_sort_list(listint_t **list);
 /*quick sort algorithm*/
 void quick_sort(int *array, size_t size);
 void quick_s(int *array, int low, int high, size_t size);
-int partition(int *array,int low, int high, size_t size);
+int partition(int *array, int low, int high, size_t size);
 #endif
