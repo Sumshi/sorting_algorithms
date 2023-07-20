@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "sort.h"
 /**
  * bubble_sort - Sorts an array of integers in ascending order
@@ -7,7 +6,7 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	/*int swapped;indicates if any elements were swapped*/
+	int swapped;/*indicates if any elements were swapped*/
 	size_t i;/*Traverses the array, outer loop*/
 	size_t j;/*iterates the inner loop compares elements*/
 	int temp;/*to store copy of one element*/
