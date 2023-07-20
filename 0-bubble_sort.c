@@ -19,20 +19,20 @@ void bubble_sort(int *array, size_t size)
 
 	for (i = 0; i < size; i++)
 	{
-		/*swapped = 0;no elements were swapped at the start*/
-		for (j = 0; j < (size - 1); j++)
+		swapped = 0;/*no elements were swapped at the start*/
+		for (j = 0; j < (size - 1 - i); j++)
 		{
-			if (array[j] > array[j + 1])
+			if (array[j] > array[j + 1])/*< for descending order*/
 			{
 				/* Swap the elements */
 				temp = array[j];
 				array[j] = array[j + 1];
 				array[j + 1] = temp;
-				/*swapped = 1;*/
+				swapped = 1;/*elements were swapped*/
 				print_array(array, size);
 			}
 		}
-		/*if (!swapped)*/
-			/*break;*/
+		if (!swapped)/*means it was already sorted*/
+			break;
 	}
 }
