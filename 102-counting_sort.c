@@ -1,77 +1,52 @@
-#include <stdio.h>
-#include <stdlib.h>
-
+#include "sort.h"
 /**
- * counting_sort - Sorts an array of integers in ascending order using
- *                 the Counting sort algorithm.
+ * counting_sort - sorts an array of integers in ascending order
+ * Counting sort algorithm
+ * @array: array to sort
+ * @size: size of the array to sort
  *
- * @array: Pointer to the array to be sorted.
- * @size: Size of the array.
+ * Return: void
  */
 void counting_sort(int *array, size_t size)
 {
-    if (array == NULL || size < 2)
-        return;
+	int i, max;
+	int *count = NULL, *copy = NULL;
+	size_t j, temp, total = 0;
 
-    /* Find the maximum element in the array */
-    int max = array[0];
-    for (size_t i = 1; i < size; i++)
-    {
-        if (array[i] > max)
-            max = array[i];
-    }
 
-    /* Create a count array of size 'max + 1' */
-    int *count_array = malloc((max + 1) * sizeof(int));
-    if (count_array == NULL)
-        return;
-
-    /* Initialize the count array elements to 0 */
-    for (int i = 0; i <= max; i++)
-    {
-        count_array[i] = 0;
-    }
-
-    /* Count the occurrences of each element in the input array */
-    for (size_t i = 0; i < size; i++)
-    {
-        count_array[array[i]]++;
-    }
-
-    printf("%d", count_array[0]);
-    for (int i = 1; i <= max; i++)
-    {
-        printf(", %d", count_array[i]);
-    }
-    printf("\n");
-
-    /* Calculate the cumulative sums in the count array */
-    for (int i = 1; i <= max; i++)
-    {
-        count_array[i] += count_array[i - 1];
-    }
-
-    /* Create an output array */
-    int *output_array = malloc(size * sizeof(int));
-    if (output_array == NULL)
-    {
-        free(count_array);
-        return;
-    }
-
-    /* Place the elements in their correct sorted positions */
-    for (ssize_t i = size - 1; i >= 0; i--)
-    {
-        output_array[count_array[array[i]] - 1] = array[i];
-        count_array[array[i]]--;
-    }
-
-    /* Copy the sorted elements back to the input array */
-    for (size_t i = 0; i < size; i++)
-    {
-        array[i] = output_array[i];
-    }
-
-    free(count_array);
-    free(output_array);
+	if (array == NULL || size < 2)
+		return;
+	copy = malloc(sizeof(int) * size);
+	if (copy == NULL)
+		return;
+	for (j = 0, max = 0; j < size; j++)
+	{
+		copy[j] = array[j];
+		if (array[j] > max)
+			max = array[j];
+	}
+	count = malloc(sizeof(int) * (max + 1));
+	if (count == NULL)
+	{
+		free(copy);
+		return;
+	}
+	for (i = 0; i <= max; i++)
+		count[i] = 0;
+	for (j = 0; j < size; j++)
+		count[array[j]] += 1;
+	for (i = 0; i <= max; i++)
+	{
+		temp = count[i];
+		count[i] = total;
+		total += temp;
+	}
+	for (j = 0; j < size; j++)
+	{
+		array[count[copy[j]]] = copy[j];
+		count[copy[j]] += 1;
+	}
+	print_array(count, max + 1);
+	free(count);
+	free(copy);
 }
