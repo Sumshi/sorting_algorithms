@@ -7,8 +7,7 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int i;
-	int max;/*stores maximum value in the array*/
+	int i, max;/*stores maximum value in the array*/
 	int *count = NULL, *copy = NULL;
 	size_t j, temp, total = 0;
 
