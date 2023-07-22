@@ -1,20 +1,19 @@
 #include "sort.h"
 /**
  * counting_sort - sorts an array of integers in ascending order
- * Counting sort algorithm
  * @array: array to sort
  * @size: size of the array to sort
- *
  * Return: void
  */
 void counting_sort(int *array, size_t size)
 {
-	int i, max;
+	int i;
+	int max;/*stores maximum value in the array*/
 	int *count = NULL, *copy = NULL;
 	size_t j, temp, total = 0;
 
 
-	if (array == NULL || size < 2)
+	if (array == NULL || size <= 1)
 		return;
 	copy = malloc(sizeof(int) * size);
 	if (copy == NULL)
