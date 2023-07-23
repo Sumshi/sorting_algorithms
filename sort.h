@@ -38,6 +38,6 @@ void counting_sort(int *array, size_t size);
 
 /*merge sort algo*/
 void merge_sort(int *array, size_t size);
-void merge_sort_helper(int *array, int left, int right, int *tmp);
-void merge(int *array, int left, int mid, int right, int *tmp);
+void merge(size_t lo, size_t mi, size_t hi, int *dest, int *src);
+void merge_partition(size_t lo, size_t hi, int *array, int *base);
 #endif
