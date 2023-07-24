@@ -8,14 +8,12 @@
 int get_max(int *array, size_t size)
 {
 	int max = array[0];
-	size_t i;
+	int i;
 
-	for (i = 1; i < size; i++)
+	for (i = 1; i < (int)size; i++)
 	{
 		if (array[i] > max)
-		{
 			max = array[i];
-		}
 	}
 	return (max);
 }
@@ -33,9 +31,7 @@ void count_sort(int *array, size_t size, int digit)
 
 	output = malloc(sizeof(int) * size);
 	if (output == NULL)
-	{
-		return;
-	}
+		exit(2);
 	for (i = 0; i < (int)size; i++)
 		count[(array[i] / digit) % 10]++;
 
