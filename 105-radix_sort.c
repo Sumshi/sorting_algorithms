@@ -31,9 +31,9 @@ void count_sort(int *array, size_t size, int digit)
 	int count[10] = {0};
 	int i;
 
-	if (!output)
+	if (output == NULL)
 	{
-		exit(EXIT_FAILURE);
+		exit(10)
 	}
 	for (i = 0; i < (int)size; i++)
 		count[(array[i] / digit) % 10]++;
@@ -60,6 +60,8 @@ void radix_sort(int *array, size_t size)
 	int max = get_max(array, size);
 	int digit;
 
+	if (array == NULL || size <= 1)
+		return;
 	for (digit = 1; max / digit > 0; digit *= 10)
 	{
 		count_sort(array, size, digit);
