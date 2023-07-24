@@ -45,8 +45,8 @@ void heap_sort(int *array, size_t size);
 void swap_node(int *array, size_t root, size_t high, size_t size);
 
 void radix_sort(int *array, size_t size);
-/*int get_max(int *array, size_t size);
-void count_sort(int *array, size_t size, int digit);*/
+int get_max(int *array, size_t size);
+void count_sort(int *array, size_t size, int digit);
 
 /*qucik sort hoarse*/
 size_t partition_ho(int *array, ssize_t lo, ssize_t hi, size_t size);
