@@ -15,7 +15,7 @@ int get_max(int *arr, size_t size)
 	return (max);
 }
 /**
- * count_sort - count sorting based on @digit
+ * count_sort - uses count sort 
  * @arr: array
  * @size: size of the array
  * @digit: digit
@@ -27,7 +27,7 @@ void count_sort(int *arr, size_t size, int digit)
 
 	output = malloc(sizeof(int) * size);
 	if (output == NULL)
-		exit(2);
+		return;
 
 	for (i = 0; i < (int)size; i++)
 		count[(arr[i] / digit) % 10]++;
