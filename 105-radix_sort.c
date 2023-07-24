@@ -15,7 +15,7 @@ int get_max(int *arr, size_t size)
 	return (max);
 }
 /**
- * count_sort - uses count sort 
+ * count_sort - uses count sort
  * @arr: array
  * @size: size of the array
  * @digit: digit
@@ -53,12 +53,11 @@ void count_sort(int *arr, size_t size, int digit)
  */
 void radix_sort(int *array, size_t size)
 {
-	int digit, max;
+	int digit;
+	int max = get_max(array, size);
 
 	if (array == NULL || size < 2)
 		return;
-
-	max = get_max(array, size);
 	for (digit = 1; max / digit > 0; digit *= 10)
 	{
 		count_sort(array, size, digit);
