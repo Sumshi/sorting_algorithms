@@ -1,48 +1,49 @@
 #include "sort.h"
 /**
  * get_max - Returns the maximum value in an array
- * @arr: The input array
+ * @array: The input array
  * @size: Size of the array
  * Return: The maximum value
  */
-int get_max(int *arr, size_t size)
+int get_max(int *array, size_t size)
 {
-	int i, max = arr[0];
+	int i;
+	int  max = array[0];/*to store the maximum value*/
 
 	for (i = 1; i < (int)size; i++)
-		if (arr[i] > max)
-			max = arr[i];
+		if (array[i] > max)
+			max = array[i];
 	return (max);
 }
 /**
  * count_sort - Sorts an array of integers using counting sort
- * @arr: The input array
+ * @array: The input array
  * @size: Size of the array
  * @digit: The current digit place value
  */
-void count_sort(int *arr, size_t size, int digit)
+void count_sort(int *array, size_t size, int digit)
 {
 	int *output = NULL;
-	int i, count[10] = {0};
+	int i;
+	int count[10] = {0};/*is used for counting occurrences of digits*/
 
 	output = malloc(sizeof(int) * size);
 	if (output == NULL)
-		exit(2);
+		return;
 
 	for (i = 0; i < (int)size; i++)
-		count[(arr[i] / digit) % 10]++;
+		count[(array[i] / digit) % 10]++;
 
 	for (i = 1; i < 10; i++)
 		count[i] += count[i - 1];
 
 	for (i = (int)size - 1; i >= 0; i--)
 	{
-		output[count[(arr[i] / digit) % 10] - 1] = arr[i];
-		count[(arr[i] / digit) % 10]--;
+		output[count[(array[i] / digit) % 10] - 1] = array[i];
+		count[(array[i] / digit) % 10]--;
 	}
 	for (i = 0; i < (int)size; i++)
-		arr[i] = output[i];
-
+		array[i] = output[i];
 	free(output);
 }
 /**
