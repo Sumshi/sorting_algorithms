@@ -23,7 +23,7 @@ int get_max(int *arr, size_t size)
 void count_sort(int *arr, size_t size, int digit)
 {
 	int *output = NULL;
-	int i, count[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	int i, count[10] = {0};
 
 	output = malloc(sizeof(int) * size);
 	if (output == NULL)
