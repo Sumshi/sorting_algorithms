@@ -33,7 +33,7 @@ void count_sort(int *array, size_t size, int digit)
 
 	if (output == NULL)
 	{
-		exit(10)
+		exit(EXIT_FAILURE);
 	}
 	for (i = 0; i < (int)size; i++)
 		count[(array[i] / digit) % 10]++;
