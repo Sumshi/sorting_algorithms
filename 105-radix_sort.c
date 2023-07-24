@@ -1,61 +1,63 @@
 #include "sort.h"
 /**
- * get_max - get the max value in the array
- * @arr: array
- * @size: size of the array
- * Return: max value
+ * get_max - Returns the maximum value in an array
+ * @array: The input array
+ * @size: Size of the array
+ * Return: The maximum value
  */
-int get_max(int *arr, size_t size)
+int get_max(int *array, size_t size)
 {
-	int i, max = arr[0];
+	int max = array[0];
+	int i;
 
 	for (i = 1; i < (int)size; i++)
-		if (arr[i] > max)
-			max = arr[i];
+	{
+		if (array[i] > max)
+			max = array[i];
+	}
 	return (max);
 }
 /**
- * count_sort - uses count sort
- * @arr: array
- * @size: size of the array
- * @digit: digit
+ * count_sort - Sorts an array of integers using counting sort
+ * @array: The input array
+ * @size: Size of the array
+ * @digit: The current digit place value
  */
-void count_sort(int *arr, size_t size, int digit)
+void count_sort(int *array, size_t size, int digit)
 {
 	int *output = NULL;
-	int i, count[10] = {0};
+	int count[10] = {0};
+	int i;
 
 	output = malloc(sizeof(int) * size);
 	if (output == NULL)
-		return;
-
+		exit(2);
 	for (i = 0; i < (int)size; i++)
-		count[(arr[i] / digit) % 10]++;
+		count[(array[i] / digit) % 10]++;
 
 	for (i = 1; i < 10; i++)
 		count[i] += count[i - 1];
 
 	for (i = (int)size - 1; i >= 0; i--)
 	{
-		output[count[(arr[i] / digit) % 10] - 1] = arr[i];
-		count[(arr[i] / digit) % 10]--;
+		output[count[(array[i] / digit) % 10] - 1] = array[i];
+		count[(array[i] / digit) % 10]--;
 	}
 	for (i = 0; i < (int)size; i++)
-		arr[i] = output[i];
-
+		array[i] = output[i];
 	free(output);
 }
-
 /**
- * radix_sort - sort an array using radix sort algorithm
- * @array: array to sort
- * @size: size of the array
+ * radix_sort - Sorts an array of integers using LSD sort algorithm
+ * @array: The input array
+ * @size: Size of the array
  */
 void radix_sort(int *array, size_t size)
 {
+	int max;
 	int digit;
-	int max = get_max(array, size);
 
+	max = get_max(array, size);
 	if (array == NULL || size < 2)
 		return;
 	for (digit = 1; max / digit > 0; digit *= 10)
