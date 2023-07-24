@@ -1,64 +1,64 @@
 #include "sort.h"
 /**
- * get_max - Returns the maximum value in an array
- * @array: The input array
- * @size: Size of the array
- * Return: The maximum value
+ * get_max - get the max value in the array
+ * @arr: array
+ * @size: size of the array
+ * Return: max value
  */
-int get_max(int *array, size_t size)
+int get_max(int *arr, size_t size)
 {
-	int max = array[0];
-	int i;
+	int i, max = arr[0];
 
 	for (i = 1; i < (int)size; i++)
-	{
-		if (array[i] > max)
-			max = array[i];
-	}
+		if (arr[i] > max)
+			max = arr[i];
 	return (max);
 }
 /**
- * count_sort - Sorts an array of integers using counting sort
- * @array: The input array
- * @size: Size of the array
- * @digit: The current digit place value
+ * count_sort - count sorting based on @digit
+ * @arr: array
+ * @size: size of the array
+ * @digit: digit
  */
-void count_sort(int *array, size_t size, int digit)
+void count_sort(int *arr, size_t size, int digit)
 {
 	int *output = NULL;
-	int count[10] = {0};
-	int i;
+	int i, count[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 	output = malloc(sizeof(int) * size);
 	if (output == NULL)
 		exit(2);
+
 	for (i = 0; i < (int)size; i++)
-		count[(array[i] / digit) % 10]++;
+		count[(arr[i] / digit) % 10]++;
 
 	for (i = 1; i < 10; i++)
 		count[i] += count[i - 1];
 
 	for (i = (int)size - 1; i >= 0; i--)
 	{
-		output[count[(array[i] / digit) % 10] - 1] = array[i];
-		count[(array[i] / digit) % 10]--;
+		output[count[(arr[i] / digit) % 10] - 1] = arr[i];
+		count[(arr[i] / digit) % 10]--;
 	}
 	for (i = 0; i < (int)size; i++)
-		array[i] = output[i];
+		arr[i] = output[i];
+
 	free(output);
 }
+
 /**
- * radix_sort - Sorts an array of integers using LSD sort algorithm
- * @array: The input array
- * @size: Size of the array
+ * radix_sort - sort an array using radix sort algorithm
+ * @array: array to sort
+ * @size: size of the array
  */
 void radix_sort(int *array, size_t size)
 {
-	int max = get_max(array, size);
-	int digit;
+	int digit, max;
 
 	if (array == NULL || size < 2)
 		return;
+
+	max = get_max(array, size);
 	for (digit = 1; max / digit > 0; digit *= 10)
 	{
 		count_sort(array, size, digit);
