@@ -43,7 +43,7 @@ void count_sort(int *array, size_t size, int digit)
 		count[(array[i] / digit) % 10]--;
 	}
 	for (i = 0; i < (int)size; i++)
-		array[i] = output[i];
+		array[i] = output[i];/*copies sorted array to original arr*/
 	free(output);
 }
 /**
