@@ -27,13 +27,14 @@ int get_max(int *array, size_t size)
  */
 void count_sort(int *array, size_t size, int digit)
 {
-	int *output = malloc(sizeof(int) * size);
+	int *output = NULL;
 	int count[10] = {0};
 	int i;
 
+	output = malloc(sizeof(int) * size);
 	if (output == NULL)
 	{
-		exit(EXIT_FAILURE);
+		return;
 	}
 	for (i = 0; i < (int)size; i++)
 		count[(array[i] / digit) % 10]++;
