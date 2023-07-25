@@ -65,7 +65,7 @@ int partition(int *array, int low, int high, size_t size)
  * quick_recursive - recursively sorts the array
  * @array: given array
  * @low: lower side
- * @high:high side 
+ * @high:high side
  * @size: array's size
  * Return: void
  */
