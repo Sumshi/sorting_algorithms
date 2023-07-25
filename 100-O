@@ -1,0 +1,4 @@
+Time complexity
+Best case: O(n log n)
+Average case: O(n log n)
+worst case: O(n^2)
