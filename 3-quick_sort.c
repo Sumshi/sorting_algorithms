@@ -1,7 +1,7 @@
 #include "sort.h"
-
 /**
- * quick_sort - function that sorts an array of integers
+ * quick_sort - function that sorts an array of integers, most effecient
+ * uses divide and conquer concepts
  * @array: array
  * @size: array's size
  * Return: void
@@ -14,17 +14,17 @@ void quick_sort(int *array, size_t size)
 	quick_s(array, 0, size - 1, size);
 }
 /**
- * partition - partition
- * @array: array
- * @low: left
- * @high: right
+ * partition - elements less than or greater than pivot are arranged
+ * @array: array to partition
+ * @low: index of the lowest element in the sublist
+ * @high: index of the highest element in the sublist
  * @size: array's size
  * Return: i
  */
 int partition(int *array, int low, int high, size_t size)
 {
 	int i = low - 1, j = low;
-	int pivot = array[high], aux = 0;
+	int pivot = array[high], temp = 0;
 
 	for (; j < high; j++)
 	{
@@ -33,18 +33,18 @@ int partition(int *array, int low, int high, size_t size)
 			i++;
 			if (array[i] != array[j])
 			{
-				aux = array[i];
+				temp = array[i];
 				array[i] = array[j];
-				array[j] = aux;
+				array[j] = temp;
 				print_array(array, size);
 			}
 		}
 	}
 	if (array[i + 1] != array[high])
 	{
-		aux = array[i + 1];
+		temo = array[i + 1];
 		array[i + 1] = array[high];
-		array[high] = aux;
+		array[high] = temp;
 		print_array(array, size);
 	}
 	return (i + 1);
