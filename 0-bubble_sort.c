@@ -30,7 +30,7 @@ void bubble_sort(int *array, size_t size)
 				swapped = 1;/*elements were swapped*/
 				print_array(array, size);
 			}
-		}  
+		}
 		if (!swapped)/*means it was already sorted*/
 			break;
 	}
