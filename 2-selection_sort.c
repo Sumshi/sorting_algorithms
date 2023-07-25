@@ -1,5 +1,4 @@
 #include "sort.h"
-
 /**
  * selection_sort - Sorts an array of integers in ascending order
  * using Selection sort algorithm
@@ -16,11 +15,11 @@ void selection_sort(int *array, size_t size)
 	if (array == NULL || size <= 1)
 		return;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size - 1; i++)/*traverses the array*/
 	{
 		min_idx = i;/*points to first index*/
 
-		for (j = i + 1; j < size; j++)
+		for (j = i + 1; j < size; j++)/*compares elements in the array*/
 		{
 			if (array[j] < array[min_idx])/* use > to sort max to min*/
 				min_idx = j;
