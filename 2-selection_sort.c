@@ -1,7 +1,7 @@
 #include "sort.h"
 /**
  * selection_sort - Sorts an array of integers in ascending order
- * using Selection sort algorithm
+ * by placing the minimum value at the lowesr index
  * @array: Pointer to the first element of the array
  * @size: Size of the array
  */
