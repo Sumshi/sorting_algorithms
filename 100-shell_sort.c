@@ -1,6 +1,8 @@
 #include "sort.h"
 /**
  * shell_sort - Sorts an array of integers in ascending order
+ * it is a variation of insertion sort, it uses gaps
+ * gap determines how far apart elements are
  * @array: Pointer to the array to be sorted
  * @size: Size of the array
  */
